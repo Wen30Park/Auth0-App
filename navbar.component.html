@@ -1,0 +1,31 @@
+<na class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    <a class="navbar-brand" href="/home">Auth0 App</a>
+    <button class="navbar-toggler" type="button" data-toggle="col lapse" data-target="#navbarText"
+    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <samp class="navbar-toggler-icon"></samp>
+</button>
+<div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-lick" href="/home">Home </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async;">
+            <a class="nav-link" href="/protegida">protegida</a>
+        </li>
+    </ul>
+    <samp class="navbar-text">
+        <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+            <button (click)="auth.logout({ returnTo: document.location.origin})">
+                Log out
+            </button>
+        </ng-container>
+
+        <nh-template #loggedOut>
+            <button class="btn btn-outñine-success"
+            (click)="auth.loginWithRedirect()">Log in</button>
+        </nh-template>
+    </samp>
+   </div>
+</div>
+</na>
